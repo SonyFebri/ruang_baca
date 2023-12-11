@@ -1,0 +1,30 @@
+.container {
+    display: flex; /* Menggunakan flexbox untuk menyusun secara horizontal */
+    justify-content: space-between; /* Menyusun item dengan jarak yang sama di antara mereka */
+    width: 100%;
+    max-width: 800px; /* Mengatur lebar maksimal container */
+    margin: 20px auto; /* Memberi margin atas dan bawah, serta mengatur otomatis pada sisi kiri dan kanan */
+  }
+
+  /* Styling untuk setiap card */
+  .card {
+    flex: 0 0 30%; /* Membuat card fleksibel, tetap dengan lebar 30% dari container */
+    background-color: rgb(70, 160, 244);
+    border: 5px solid  rgb(0, 127, 246);
+    padding: 20px;
+    box-sizing: border-box; /* Menghitung padding dan border dalam total lebar/tinggi elemen */
+    text-align: center;
+  }
+  /* Styling untuk judul card */
+.card h2 {
+    font-size: 1.5em; /* Ukuran font untuk judul card */
+    color: #333; /* Warna teks untuk judul card */
+    margin-bottom: 20px; /* Margin bawah untuk memberikan ruang di antara judul dan paragraf */
+  }
+  
+  /* Styling untuk isi card */
+  .card p {
+    font-size: 1em; /* Ukuran font untuk isi card */
+    color: #666; /* Warna teks untuk isi card */
+    line-height: 1.4; /* Ketinggian baris untuk memastikan keterbacaan yang baik */
+  }
