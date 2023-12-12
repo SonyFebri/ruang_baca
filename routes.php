@@ -18,7 +18,7 @@ $router->get('/^auth\/login$/', ['AuthController@loginPage']);
 $router->post('/^auth\/login$/', ['AuthController@login']);
 $router->get('/^admin\/dashboard$/', ['AdminController@dashboardPage']);
 $router->get('/^anggota\/dashboard$/', ['AnggotaController@dashboardPage']);
-$router->get('/^admin\/kelola\/anggota$/', ['KelolaAnggotaController@kelolaAnggotaPage']);
+$router->get('/^admin\/kelola\/anggotaPage$/', ['KelolaAnggotaController@kelolaAnggotaPage']);
 $router->get('/^admin\/kelola\/anggota$/', ['KelolaAnggotaController@kelolaAnggota']);
 $router->get('/^admin\/kelola\/buku$/', ['KelolaBukuController@kelolaBukuPage']);
 $router->get('/^auth\/logout$/', ['AuthController@logout']);

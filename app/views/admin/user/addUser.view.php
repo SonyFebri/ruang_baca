@@ -1,7 +1,6 @@
 <div class="container mt-5">
     <h2>Tambah User</h2>
-    <form action="<?php echo App::get('root_uri') . '/admin/user/addUser'; ?>" method="post"
-        enctype="multipart/form-data">
+    <form action="<?php $addUserProses ?>" method="post" enctype="multipart/form-data">
         <!-- id_user -->
         <div class="mb-3">
             <label for="id_user" class="form-label">ID User</label>

@@ -1,6 +1,6 @@
 <body>
     <?php Helper::importView("partials/header.view.php") ?>
-    <?php Helper::importView("partials/sidebarAdmin.view.php") ?>
+
 
     <div class="container mt-3">
         <a href="<?php echo App::get("root_uri") . "/admin/user/addUser" ?>" class="btn btn-primary mb-3">Tambahkan
@@ -27,32 +27,32 @@
                 for ($i = 0; $i < count($anggota); $i++):
                     $user = $anggota[$i];
                     ?>
-                    <tr>
-                        <td scope="row">
-                            <?= $i + 1; ?>
-                        </td>
-                        <td scope="row">
-                            <?= $user->getIdUser() ?>
-                        </td>
-                        <td scope="row">
-                            <?= $user->getNama() ?>
-                        </td>
-                        <td scope="row">
-                            <?= $user->getUsername() ?>
-                        </td>
-                        <td scope="row">
-                            <?= $user->getAlamat() ?>
-                        </td>
-                        <td scope="row">
-                            <?= $user->getNoTlp() ?>
-                        </td>
-                        <td scope="row">
-                            <?= $user->getJenisKelamin() ?>
-                        </td>
-                        <td scope="row">
-                            <a href="edit_user.php?id=<?= $user->getIdUser(); ?>" class="btn btn-warning">Edit</a>
-                        </td>
-                    </tr>
+                <tr>
+                    <td scope="row">
+                        <?= $i + 1; ?>
+                    </td>
+                    <td scope="row">
+                        <?= $user->getIdUser() ?>
+                    </td>
+                    <td scope="row">
+                        <?= $user->getNama() ?>
+                    </td>
+                    <td scope="row">
+                        <?= $user->getUsername() ?>
+                    </td>
+                    <td scope="row">
+                        <?= $user->getAlamat() ?>
+                    </td>
+                    <td scope="row">
+                        <?= $user->getNoTlp() ?>
+                    </td>
+                    <td scope="row">
+                        <?= $user->getJenisKelamin() ?>
+                    </td>
+                    <td scope="row">
+                        <a href="edit_user.php?id=<?= $user->getIdUser(); ?>" class="btn btn-warning">Edit</a>
+                    </td>
+                </tr>
                 <?php endfor; ?>
             </tbody>
         </table>

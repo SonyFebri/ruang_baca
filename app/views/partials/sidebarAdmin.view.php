@@ -15,7 +15,8 @@
                         Peminjaman</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= App::get("root_uri") . "/admin/kelola/anggota" ?>">Kelola Anggota</a>
+                    <a class="nav-link" href="<?= App::get("root_uri") . "/admin/kelola/anggota" ?>">Kelola
+                        Anggota</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= App::get("root_uri") . "/admin/kelola/buku" ?>">Kelola Buku</a>
