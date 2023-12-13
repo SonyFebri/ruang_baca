@@ -1,27 +1,45 @@
 <?php
 class DetailCartModel
 {
-    public $idDetailCart;
-    public $idCart;
-    public $idBuku;
+    protected $idDetailCart;
+    protected $idCart;
+    protected $idBuku;
+
+    protected array $cartDetails;
+    protected string $judulBuku;
+    protected string $penulis;
+    protected int $tahunTerbit;
 
     public function __construct(
         int $idDetailCart,
         int $idCart,
-        int $idBuku
+        int $idBuku,
+        string $judulBuku,
+        string $penulis,
+        int $tahunTerbit
+
     ) {
         $this->idDetailCart = $idDetailCart;
         $this->idCart = $idCart;
         $this->idBuku = $idBuku;
+        $this->judulBuku = $judulBuku;
+        $this->penulis = $penulis;
+        $this->tahunTerbit = $tahunTerbit;
+
     }
+
     public static function fromStdClass($stdObject): DetailCartModel
     {
-        return new DetailCartModel(
-            $stdObject->idDetailCart,
-            $stdObject->idPeminjaman,
-            $stdObject->idBuku
-        );
+        $idDetailCart = $stdObject['id_detail_cart'];
+        $idCart = $stdObject['id_cart'];
+        $idBuku = $stdObject['id_buku'];
+        $judulBuku = $stdObject['judul_buku'];
+        $penulis = $stdObject['penulis'];
+        $tahunTerbit = $stdObject['tahun_terbit'];
+
+        return new DetailCartModel($idDetailCart, $idCart, $idBuku, $judulBuku, $penulis, $tahunTerbit);
     }
+
 
     //getter
     public function getIdDetailCart(): int
@@ -35,6 +53,18 @@ class DetailCartModel
     public function getIdBuku(): int
     {
         return $this->idBuku;
+    }
+    public function getJudulBuku(): string
+    {
+        return $this->judulBuku;
+    }
+    public function getPenulis(): string
+    {
+        return $this->penulis;
+    }
+    public function getTahunTerbit(): int
+    {
+        return $this->tahunTerbit;
     }
 
     //setter
@@ -51,5 +81,17 @@ class DetailCartModel
     public function setIdBuku(int $idBuku): void
     {
         $this->idBuku = $idBuku;
+    }
+    public function setJudulBuku(string $judulBuku): void
+    {
+        $this->judulBuku = $judulBuku;
+    }
+    public function setPenulis(string $penulis): void
+    {
+        $this->penulis = $penulis;
+    }
+    public function setTahunTerbit(int $tahunTerbit): void
+    {
+        $this->tahunTerbit = $tahunTerbit;
     }
 }

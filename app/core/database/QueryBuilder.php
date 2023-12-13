@@ -170,7 +170,7 @@ class QueryBuilder
 			$results = $statement->fetchAll(PDO::FETCH_CLASS);
 			return $results;
 		} catch (PDOException $e) {
-			die("Whoops!! Something Went Wrong!!!");
+			die("Whoops!! Something Went Wrong!!!" . $e->getMessage());
 		}
 	}
 	public function execute($sql, $param = [])
@@ -182,4 +182,16 @@ class QueryBuilder
 			die("Whoops!! something went wrong!!!\n" . $e->getMessage());
 		}
 	}
+	public function executeFetch($sql, $param = [])
+	{
+		try {
+			$statement = $this->pdo->prepare($sql);
+			$statement->execute($param);
+
+			return $statement->fetchAll(PDO::FETCH_ASSOC);
+		} catch (PDOException $e) {
+			die("Whoops!! something went wrong!!!\n" . $e->getMessage());
+		}
+	}
+
 }

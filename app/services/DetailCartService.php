@@ -41,5 +41,26 @@ class DetailCartService
         FROM tb_cart 
         WHERE id_user = :id_user)", $where);
     }
+    public function getDetailCartUser($where)
+    {
+        $query = "SELECT tb_detail_cart.*, tb_buku.judul_buku, tb_buku.penulis,tb_buku.tahun_terbit 
+        FROM tb_buku
+        JOIN tb_detail_cart ON tb_buku.id_buku = tb_detail_cart.id_buku
+        JOIN tb_cart ON tb_detail_cart.id_cart = tb_cart.id_cart
+        WHERE tb_cart.id_user = :id_user;
+        ";
+        $rawCartDetails = $this->db->executeFetch($query, $where);
+        $detailCart = [];
+        foreach ($rawCartDetails as $rawCartDetail) {
+            $detailCart[] = DetailCartModel::fromStdClass($rawCartDetail);
+
+        }
+        return $detailCart;
+    }
+    public function deleteRowCartDetail($where)
+    {
+        $query = "DELETE FROM tb_detail_cart WHERE id_detail_cart = :id_detail_cart";
+        $this->db->execute($query, $where);
+    }
 
 }

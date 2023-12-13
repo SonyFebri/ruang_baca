@@ -27,7 +27,11 @@ $router->get('/^buku\/searchBook$/', ['BookController@searchBook']);
 $router->get('/^admin\/kelola\/daftarPeminjaman$/', ['KelolaPeminjamanController@peminjamanPage']);
 $router->get('/^admin\/user\/addUser$/', ['UserController@addUserPage']);
 $router->post('/^admin\/user\/addUser$/', ['UserController@addUser']);
+
+//cart routes
 $router->post('/^anggota\/cart\/addToDetailCart$/', ['CartController@addToDetailCart']);
+$router->get('/^anggota\/cart\/detailCart$/', ['CartController@detailCartPage']);
+$router->post('/^anggota\/cart\/deleteCartDetail$/', ['CartController@deleteItem']);
 // $router->get('/^$/', ['GlobalController@landing']);
 // $router->get('/^contact$/', ['GlobalController@contact']);
 // $router->get('/^about$/', ['GlobalController@about']);
