@@ -46,7 +46,7 @@ class DetailCartModel
     {
         return $this->idDetailCart;
     }
-    public function getICart(): int
+    public function getIdCart(): int
     {
         return $this->idCart;
     }

@@ -61,4 +61,36 @@ class CartController
             }
         }
     }
+    public function submitCart()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['id_cart'])) {
+                $cartId = $_POST['id_cart'];
+                $userId = Session::getInstance()->get('id_user');
+                $id_user = [
+                    'id_user' => $userId
+                ];
+                $id_cart = [
+                    'id_cart' => $cartId
+                ];
+                $cartService = CartService::getInstance();
+                $detailCartService = DetailCartService::getInstance();
+                $loanService = LoanService::getInstance();
+                $detailLoanService = DetailLoanService::getInstance();
+                $loanId = $loanService->insertToLoan($id_user);
+                /**
+                 * @var PeminjamanModel $id_peminjaman
+                 */
+
+                $where = [
+                    'id_peminjaman' => $loanId,
+                    'id_cart' => $cartId
+                ];
+                $detailLoanService->insertToLoanDetail($where);
+                $detailCartService->deleteCartDetail($id_cart);
+                $cartService->updateCart($id_user);
+                return Helper::redirect('/anggota/cart/detailCart');
+            }
+        }
+    }
 }

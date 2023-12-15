@@ -31,10 +31,7 @@ class QueryBuilder
 	 * @param  string $table   [description]
 	 * @return array          [description]
 	 */
-	public function search($keyword, $table)
-	{
 
-	}
 
 	/**
 	 * Find one row using an id|pk
@@ -92,7 +89,7 @@ class QueryBuilder
 			$results = $statement->fetchAll(PDO::FETCH_CLASS);
 			return $results;
 		} catch (PDOException $e) {
-			die("Whoops!! Something Went Wrong!!!");
+			die("Whoops!! Something Went Wrong!!!" . $e->getMessage());
 		}
 	}
 

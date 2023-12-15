@@ -8,7 +8,8 @@
                     <a class="nav-link" href="<?= App::get("root_uri") . "/admin/dashboard" ?>">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= App::get("root_uri") . "" ?>">Daftar Request</a>
+                    <a class="nav-link" href="<?= App::get("root_uri") . "/admin/kelola/daftarRequest" ?>">Daftar
+                        Request</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= App::get("root_uri") . "/admin/kelola/daftarPeminjaman" ?>">Daftar

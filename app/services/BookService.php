@@ -72,4 +72,26 @@ class BookService
             return $books;
         }
     }
+    public function kurangiQuantity($where)
+    {
+        echo "buku";
+        $query = "UPDATE tb_BUKU
+        SET stok_tersedia = stok_tersedia - 1
+        WHERE id_buku IN (
+            SELECT id_buku
+            FROM tb_detail_peminjaman
+            WHERE id_peminjaman = :id_peminjaman)";
+        $this->db->execute($query, $where);
+    }
+    public function tambahQuantity($where)
+    {
+        echo "buku";
+        $query = "UPDATE tb_BUKU
+        SET stok_tersedia = stok_tersedia + 1
+        WHERE id_buku IN (
+            SELECT id_buku
+            FROM tb_detail_peminjaman
+            WHERE id_peminjaman = :id_peminjaman)";
+        $this->db->execute($query, $where);
+    }
 }

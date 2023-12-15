@@ -4,53 +4,67 @@ class PeminjamanModel
 {
     protected int $idPeminjaman;
     protected int $idUser;
-    protected int $idAdmin;
+    protected ?int $idAdmin;
     protected int $totalItem;
-    protected string $tanggalPinjam;
-    protected string $tenggatWaktu;
+    protected ?string $tanggalPinjam;
+    protected ?string $tenggatWaktu;
     protected string $status;
-    protected string $tanggalPengembalian;
+    protected ?string $tanggalPengembalian;
 
     protected array $peminjamanDetails;
 
-    protected UserModel $user;
-    protected UserModel $admin;
+    protected string $namaPeminjam;
+    protected ?string $namaAdmin;
 
     public function __construct(
         int $idPeminjaman,
         int $idUser,
-        int $idAdmin,
+        ?int $idAdmin,
         int $totalItem,
-        string $tanggalPinjam,
-        string $tenggatWaktu,
+        ?string $tanggalPinjam,
+        ?string $tenggatWaktu,
         string $status,
-        string $tanggalPengembalian,
-
+        ?string $tanggalPengembalian,
+        string $namaPeminjam,
 
 
     ) {
         $this->idPeminjaman = $idPeminjaman;
         $this->idUser = $idUser;
         $this->idAdmin = $idAdmin;
+        $this->namaPeminjam = $namaPeminjam;
+
         $this->totalItem = $totalItem;
         $this->tanggalPinjam = $tanggalPinjam;
         $this->tenggatWaktu = $tenggatWaktu;
         $this->status = $status;
         $this->tanggalPengembalian = $tanggalPengembalian;
 
+
     }
 
     public static function fromStdClass($stdObject): PeminjamanModel
     {
+        $idPeminjaman = $stdObject['id_peminjaman'];
+        $idUser = $stdObject['id_user'];
+        $idAdmin = $stdObject['id_admin'];
+        $totalItem = $stdObject['total_item'];
+        $tanggalPinjam = $stdObject['tanggal_pinjam'];
+        $tenggatWaktu = $stdObject['tenggat_waktu'];
+        $status = $stdObject['status'];
+        $tanggalPengembalian = $stdObject['tanggal_pengembalian'];
+        $namaPeminjam = $stdObject['nama_peminjam'];
+
         return new PeminjamanModel(
-            $stdObject->id_peminjaman,
-            $stdObject->id_user,
-            $stdObject->id_admin,
-            $stdObject->total_item,
-            $stdObject->tanggal_pinjam,
-            $stdObject->tenggat_waktu,
-            $stdObject->status,
-            $stdObject->tanggal_pengembalian,
+            $idPeminjaman,
+            $idUser,
+            $idAdmin,
+            $totalItem,
+            $tanggalPinjam,
+            $tenggatWaktu,
+            $status,
+            $tanggalPengembalian,
+            $namaPeminjam,
 
         );
     }
@@ -93,17 +107,18 @@ class PeminjamanModel
 
     public function getTanggalPengembalian(): string
     {
-        return $this->tanggalPengembalian;
+        return $this->tanggalPengembalian ?? '-';
     }
     public function getPeminjamandetails(): array
     {
         return $this->peminjamanDetails;
     }
 
-    public function getUser(): UserModel
+    public function getNamaPeminjam(): string
     {
-        return $this->user;
+        return $this->namaPeminjam;
     }
+
 
 
     // setters
@@ -146,12 +161,9 @@ class PeminjamanModel
         $this->peminjamanDetails = $details;
     }
 
-    public function setUser(UserModel $user): void
+    public function setUser(string $namaPeminjam): void
     {
-        $this->user = $user;
+        $this->namaPeminjam = $namaPeminjam;
     }
-    public function setAdmin(UserModel $admin): void
-    {
-        $this->user = $admin;
-    }
+
 }

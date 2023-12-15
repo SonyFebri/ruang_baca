@@ -47,4 +47,14 @@ class DetailLoanService
 
         return $loanDetails;
     }
+    public function insertToLoanDetail($where)
+    {
+        $query = "INSERT INTO tb_detail_peminjaman (id_peminjaman, id_buku)
+        SELECT :id_peminjaman , id_buku
+        FROM tb_detail_cart
+        WHERE id_cart = :id_cart";
+        $this->db->execute($query, $where);
+
+    }
+
 }

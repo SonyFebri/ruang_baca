@@ -62,5 +62,9 @@ class DetailCartService
         $query = "DELETE FROM tb_detail_cart WHERE id_detail_cart = :id_detail_cart";
         $this->db->execute($query, $where);
     }
+    public function deleteCartDetail($where)
+    {
+        $this->db->delete('tb_detail_cart', $where);
+    }
 
 }

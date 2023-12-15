@@ -18,31 +18,35 @@
              */
             $index = 1;
             foreach ($cartDetails as $cartDetail): ?>
-            <tr>
-                <td scope="row">
-                    <?= $index++; ?>
-                </td>
-                <td>
-                    <?= $cartDetail->getJudulBuku() ?>
-                </td>
+                <tr>
+                    <td scope="row">
+                        <?= $index++; ?>
+                    </td>
+                    <td>
+                        <?= $cartDetail->getJudulBuku() ?>
+                    </td>
 
-                <td>
-                    <?= $cartDetail->getPenulis() ?>
-                </td>
-                <td>
-                    <?= $cartDetail->getTahunTerbit() ?>
-                </td>
-                <td>
-                    <form action="<?php echo App::get("root_uri") . "/anggota/cart/deleteCartDetail" ?>" method="post">
-                        <input type="hidden" name="id_detail_cart" value="<?= $cartDetail->getIdDetailCart(); ?>">
-                        <button type="submit" class="btn btn-danger">Hapus</button>
-                    </form>
-                </td>
-            </tr>
+                    <td>
+                        <?= $cartDetail->getPenulis() ?>
+                    </td>
+                    <td>
+                        <?= $cartDetail->getTahunTerbit() ?>
+                    </td>
+                    <td>
+                        <form action="<?php echo App::get("root_uri") . "/anggota/cart/deleteCartDetail" ?>" method="post">
+                            <input type="hidden" name="id_detail_cart" value="<?= $cartDetail->getIdDetailCart(); ?>">
+                            <button type="submit" class="btn btn-danger">Hapus</button>
+                        </form>
+                    </td>
+                </tr>
             <?php endforeach; ?>
+            <form action="<?php echo App::get("root_uri") . "/anggota/cart/submitCart" ?>" method="post">
+                <input type="hidden" name="id_cart" value="<?= $cartDetail->getIdCart(); ?>">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
         </tbody>
     </table>
 
     <!-- Tombol Submit di luar tabel -->
-    <button type="submit" class="btn btn-primary">Submit</button>
+
 </div>

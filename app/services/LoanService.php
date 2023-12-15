@@ -32,33 +32,52 @@ class LoanService
 
         return self::$instances[$cls];
     }
-    public function getAllLoans()
+    public function getAllLoansRequest()
     {
-        $rawLoans = $this->db->selectAll("tb_peminjaman");
+        $query = "SELECT
+        p.*,
+        u_peminjam.nama AS nama_peminjam
+    FROM
+        tb_PEMINJAMAN p
+    JOIN
+        tb_USER u_peminjam ON p.id_user = u_peminjam.id_user
+    WHERE
+        p.status = 'Pending';
+    ";
+        $rawLoans = $this->db->executeFetch($query);
         $loans = [];
-
+        // return Helper::dd($rawLoans);
         if ($rawLoans) {
             foreach ($rawLoans as $rawLoan) {
-                $loans[] = BookModel::fromStdClass($rawLoan);
+                $loans[] = PeminjamanModel::fromStdClass($rawLoan);
             }
             return $loans;
         }
 
         return $loans;
     }
-    public function getAllHistoryLoans(array $where)
+    public function getAllHistoryLoans()
     {
-        $rawLoans = $this->db->selectAll('tb_peminajaman');
+        $query = "SELECT
+        p.*,
+        u_peminjam.nama AS nama_peminjam
+    FROM
+        tb_PEMINJAMAN p
+    JOIN
+        tb_USER u_peminjam ON p.id_user = u_peminjam.id_user
+    WHERE
+        p.status <> 'Pending'
+    ORDER BY
+        CASE WHEN p.status = 'Dipinjam' THEN 0 ELSE 1 END, p.status";
 
-        $loans = [];    
+        $rawLoans = $this->db->executeFetch($query);
+        // return Helper::dd($rawLoans);
+        $loan = [];
+        foreach ($rawLoans as $rawLoan) {
+            $loan[] = PeminjamanModel::fromStdClass($rawLoan);
 
-        if ($rawLoans) {
-            foreach ($rawLoans as $rawLoan) {
-                $loans[] = PeminjamanModel::fromStdClass($rawLoan);
-            }
         }
-
-        return $loans;
+        return $loan;
     }
 
     public function getSingleLoan(array $where): PeminjamanModel|null
@@ -76,8 +95,38 @@ class LoanService
 
         return null;
     }
+    public function insertToLoan($where)
+    {
+        $query = "INSERT INTO tb_peminjaman (id_user, total_item, status)
+        SELECT id_user, total_item, 'Pending' AS status
+        FROM tb_CART
+        WHERE id_user = :id_user";
+        $this->db->execute($query, $where);
+        $id_peminjaman = $this->db->getLastInsertId();
+        return $id_peminjaman;
 
-    
+    }
+    public function updateStatusLoan($where)
+    {
+        $query = "UPDATE tb_PEMINJAMAN
+        SET
+            status = 'Dipinjam',
+            id_admin = :id_user,
+            tanggal_pinjam = NOW(),
+            tenggat_waktu = DATE_ADD(NOW(), INTERVAL 7 DAY)
+        WHERE id_peminjaman = :id_peminjaman";
+        $this->db->execute($query, $where);
+    }
+    public function updateLoanReturn($where)
+    {
+        $query = "UPDATE tb_PEMINJAMAN
+        SET
+            status = 'Telah Dikembalikan', tanggal_pengembalian = NOW()
+        WHERE id_peminjaman = :id_peminjaman";
+        $this->db->execute($query, $where);
+    }
+
+
 
     // $loan = $loanService::getInstance()->getSingleLoan(['id_user' => $id_user]);
 

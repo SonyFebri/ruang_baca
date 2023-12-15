@@ -16,6 +16,7 @@ $router->get('/^$/', ['GlobalController@landing']);
 
 $router->get('/^auth\/login$/', ['AuthController@loginPage']);
 $router->post('/^auth\/login$/', ['AuthController@login']);
+
 $router->get('/^admin\/dashboard$/', ['AdminController@dashboardPage']);
 $router->get('/^anggota\/dashboard$/', ['AnggotaController@dashboardPage']);
 $router->get('/^admin\/kelola\/anggotaPage$/', ['KelolaAnggotaController@kelolaAnggotaPage']);
@@ -24,7 +25,7 @@ $router->get('/^admin\/kelola\/buku$/', ['KelolaBukuController@kelolaBukuPage'])
 $router->get('/^auth\/logout$/', ['AuthController@logout']);
 $router->get('/^anggota\/katalogBuku$/', ['KelolaBukuController@katalogBukuPage']);
 $router->get('/^buku\/searchBook$/', ['BookController@searchBook']);
-$router->get('/^admin\/kelola\/daftarPeminjaman$/', ['KelolaPeminjamanController@peminjamanPage']);
+
 $router->get('/^admin\/user\/addUser$/', ['UserController@addUserPage']);
 $router->post('/^admin\/user\/addUser$/', ['UserController@addUser']);
 
@@ -32,6 +33,14 @@ $router->post('/^admin\/user\/addUser$/', ['UserController@addUser']);
 $router->post('/^anggota\/cart\/addToDetailCart$/', ['CartController@addToDetailCart']);
 $router->get('/^anggota\/cart\/detailCart$/', ['CartController@detailCartPage']);
 $router->post('/^anggota\/cart\/deleteCartDetail$/', ['CartController@deleteItem']);
+$router->post('/^anggota\/cart\/submitCart$/', ['CartController@submitCart']);
+
+//kelola peminjaman routes
+$router->get('/^admin\/kelola\/daftarRequest$/', ['KelolaPeminjamanController@requestPeminjamanPage']);
+$router->get('/^admin\/kelola\/daftarPeminjaman$/', ['KelolaPeminjamanController@daftarPeminjamanPage']);
+$router->post('/^admin\/kelola\/konfirmasiRequest$/', ['KelolaPeminjamanController@konfirmasiRequest']);
+$router->post('/^admin\/kelola\/konfirmasiPengembalian$/', ['KelolaPeminjamanController@konfirmasiPengembalian']);
+
 // $router->get('/^$/', ['GlobalController@landing']);
 // $router->get('/^contact$/', ['GlobalController@contact']);
 // $router->get('/^about$/', ['GlobalController@about']);

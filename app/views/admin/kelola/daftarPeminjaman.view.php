@@ -1,14 +1,13 @@
-<link rel="stylesheet" href="<?php echo App::get("root_uri") . "/public/css/styleTable.css" ?>">
-
 <body>
     <?php Helper::importView("partials/header.view.php") ?>
-    <?php Helper::importView("partials/sidebarAdmin.view.php") ?>
+
 
     <table class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">No</th>
-                <th scope="col">Judul Buku</th>
+                <th scope="col">Nama Peminjam</th>
+                <th scope="col">Total Item</th>
                 <th scope="col">Tanggal Pinjam</th>
                 <th scope="col">Tenggat Waktu</th>
                 <th scope="col">Status</th>
@@ -19,43 +18,59 @@
         <tbody>
             <?php
             /**
-             * @var PeminjamanModel[] $loans 
+             * @var PeminjamanModel[] $loan 
              */
-            foreach ($loans as $index => $loan): ?>
+            $index = 1;
+            foreach ($loan as $loans): ?>
                 <tr>
                     <td scope="row">
-                        <?= $index + 1; ?>
+                        <?= $index++; ?>
                     </td>
                     <td>
-
+                        <?= $loans->getNamaPeminjam() ?>
                     </td>
                     <td>
-                        <?= $loan->getIdPeminjaman() ?>
-                    </td>
-
-                    <td>
-                        <?= $loan->getTotalItem() ?>
+                        <?= $loans->getTotalItem() ?>
                     </td>
                     <td>
-                        <?= $loan->getTanggalPinjam() ?>
+                        <?= $loans->getTanggalPinjam() ?>
                     </td>
                     <td>
-                        <?= $loan->getTenggatWaktu() ?>
+                        <?= $loans->getTenggatWaktu() ?>
                     </td>
                     <td>
-                        <?= $loan->getStatus() ?>
+                        <?= $loans->getStatus() ?>
                     </td>
                     <td>
-                        <?= $loan->getTanggalPengembalian() ?>
+                        <?= $loans->getTanggalPengembalian() ?>
                     </td>
                     <td>
-                        <form action="#" method="post">
-                            <input type="hidden" name="id_peminjaman" value="<?= $loan->getIdPeminjaman() ?>">
+                        <form action="#" method="post" style="display: inline-block;">
+                            <input type="hidden" name="id_peminjaman" value="<?= $loans->getIdPeminjaman() ?>">
                             <button type="submit" class="btn btn-sm btn-info">
                                 Detail
                             </button>
                         </form>
+                        <?php
+                        $buttonKembali = $loans->getStatus();
+                        if ($buttonKembali == "Dipinjam") {
+                            ?>
+                            <form action="<?= App::get("root_uri") . "/admin/kelola/konfirmasiPengembalian" ?>" method="post"
+                                style="display: inline-block;">
+                                <input type="hidden" name="id_peminjaman" value="<?= $loans->getIdPeminjaman() ?>">
+                                <button type="submit" class="btn btn-sm btn-info">
+                                    Kembali
+                                </button>
+                            </form>
+                            <?php
+                        } else {
+
+                        }
+                        ?>
                     </td>
+
+                    </td>
+
                 </tr>
             <?php endforeach; ?>
         </tbody>
