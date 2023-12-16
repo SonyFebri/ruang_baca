@@ -32,6 +32,8 @@ class AuthController
 
             if ($user) {
                 if (password_verify($password, $user->getPassword())) {
+
+                    // Session::getInstance()->push('user', $user); 
                     $_SESSION['id_user'] = $user->getIdUser();
                     $_SESSION['role'] = $user->getRole();
                     $_SESSION['nama'] = $user->getNama();
@@ -43,10 +45,8 @@ class AuthController
                     $_SESSION['jenis_kelamin'] = $user->getJenisKelamin();
 
                     if ($user->getRole() == 'admin') {
-                        echo "admin logged";
                         return Helper::redirect("/admin/dashboard");
                     } elseif ($user->getRole() == 'anggota') {
-                        echo "anggota logged";
                         return Helper::redirect("/anggota/dashboard");
                     } else {
                         echo "Fiqlal logged";
@@ -59,10 +59,13 @@ class AuthController
             }
         }
     }
-    function logout()
+    public function logout()
     {
-        session_destroy();
-        return Helper::redirect("/auth/login");
-
+        try {
+            session_destroy();
+            return Helper::redirect("/auth/login");
+        } catch (Exception $e) {
+            echo 'Logout failed: ' . $e->getMessage();
+        }
     }
 }

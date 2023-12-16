@@ -1,13 +1,9 @@
 <body>
     <?php Helper::importView("partials/headerAdmin.view.php") ?>
 
-    <style>
-    .tabel {
-        margin-inline: 50px;
-    }
-    </style>
+
     <div class="tabel">
-        <table class="table table-striped">
+        <table class="table table-striped" style="margin-inline: 50px;">
             <thead>
                 <tr>
                     <th scope="col">No</th>
@@ -50,7 +46,8 @@
                         <?= $loans->getTanggalPengembalian() ?>
                     </td>
                     <td>
-                        <form action="#" method="post" style="display: inline-block;">
+                        <form action="<?= App::get("root_uri") . "/admin/kelola/detailPeminjaman" ?>" method="post"
+                            style="display: inline-block;">
                             <input type="hidden" name="id_peminjaman" value="<?= $loans->getIdPeminjaman() ?>">
                             <button type="submit" class="btn btn-sm btn-info">
                                 Detail
@@ -64,7 +61,7 @@
                             method="post" style="display: inline-block;">
                             <input type="hidden" name="id_peminjaman" value="<?= $loans->getIdPeminjaman() ?>">
                             <button type="submit" class="btn btn-sm btn-info">
-                                Kembali
+                                Return
                             </button>
                         </form>
                         <?php

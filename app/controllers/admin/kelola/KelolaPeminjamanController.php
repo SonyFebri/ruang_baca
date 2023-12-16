@@ -12,44 +12,28 @@ class KelolaPeminjamanController
          */
         $loans = $loanService->getAllLoansRequest();
 
-        foreach ($loans as $loan) {
-            // $loan->setUser($userService->getSingleUser(['id_user' => $loan->getIdUser()]));
-            // $loan->setUser($userService->getSingleUser(['id_admin' => $loan->getIdUser()]));
-        }
 
         $data = [
             "loans" => $loans
         ];
         return Helper::view("admin/kelola/daftarRequest", $data);
     }
+
     public function peminjamanDetail()
     {
-        $loanService = LoanService::getInstance();
         $detailLoanService = DetailLoanService::getInstance();
-        $userService = UserService::getInstance();
 
         $id_peminjaman = isset($_POST['id_peminjaman']) ? $_POST['id_peminjaman'] : null;
+        $id = [
+            'id_peminjaman' => $id_peminjaman
+        ];
 
         if ($id_peminjaman !== null) {
-
-            /**
-             * @var PeminjamanModel $loan
-             */
-            $loan = $loanService->getSingleLoan(['id_peminjaman' => $id_peminjaman]);
-
-            if ($loan) {
-                $loan->setPeminjamanDetails($detailLoanService->getLoanDetails(['id_peminjaman', $loan->getIdPeminjaman()]));
-                // $loan->setUser($userService->getSingleUser(['id_user' => $loan->getIdUser()]));
-                // $loan->setAdmin($userService->getSingleUser(['id_admin' => $loan->getIdAdmin()]));  
-
-                $data = [
-                    "loans" => $loan
-                ];
-
-                return Helper::view("admin/kelola/detailPeminjaman", $data);
-            } else {
-
-            }
+            $loanDetails = $detailLoanService->getLoanDetails($id);
+            $data = [
+                'loanDetails' => $loanDetails
+            ];
+            return Helper::view("admin/kelola/detailPeminjaman", $data);
         } else {
 
         }

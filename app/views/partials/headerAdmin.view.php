@@ -1,40 +1,40 @@
 <style>
-    .user-profile {
-        position: relative;
-        display: inline-block;
-    }
+.user-profile {
+    position: relative;
+    display: inline-block;
+}
 
-    .user-info {
-        display: flex;
-        align-items: center;
-    }
+.user-info {
+    display: flex;
+    align-items: center;
+}
 
-    .user-name {
-        margin-top: 1px;
-        margin-right: 30px;
-        /* Mengurangi jarak antara nama dan gambar */
-    }
+.user-name {
+    margin-top: 1px;
+    margin-right: 30px;
+    /* Mengurangi jarak antara nama dan gambar */
+}
 
-    .cart-logo {
-        width: 20px;
-        /* Sesuaikan dengan ukuran yang diinginkan */
-        height: 20px;
-        /* Sesuaikan dengan ukuran yang diinginkan */
-        margin-right: 10px;
-    }
+.cart-logo {
+    width: 20px;
+    /* Sesuaikan dengan ukuran yang diinginkan */
+    height: 20px;
+    /* Sesuaikan dengan ukuran yang diinginkan */
+    margin-right: 10px;
+}
 
-    .user-profile img {
-        width: 40px;
-        height: 40px;
-        border-radius: 40%;
-        margin-right: 10px;
-    }
+.user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 40%;
+    margin-right: 10px;
+}
 
-    .logo-img {
-        width: 70%;
-        height: auto;
-        margin-left: 20px;
-    }
+.logo-img {
+    width: 70%;
+    height: auto;
+    margin-left: 20px;
+}
 </style>
 
 <nav class="navbar">

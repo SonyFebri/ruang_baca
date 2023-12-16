@@ -25,7 +25,7 @@ $router->get('/^anggota\/profile$/', ['AnggotaController@profilePage']);
 
 
 $router->get('/^buku\/searchBook$/', ['BookController@searchBook']);
-$router->get('/^auth\/logout$/', ['AuthMiddleware@validateSession', 'AuthController@logout']);
+$router->get('/^auth\/logout$/', ['AuthController@logout']);
 
 //admin routes
 $router->get('/^admin\/kelola\/anggota$/', ['KelolaAnggotaController@kelolaAnggota']);
@@ -44,6 +44,7 @@ $router->post('/^anggota\/cart\/submitCart$/', ['CartController@submitCart']);
 //kelola peminjaman routes
 $router->get('/^admin\/kelola\/daftarRequest$/', ['KelolaPeminjamanController@requestPeminjamanPage']);
 $router->get('/^admin\/kelola\/daftarPeminjaman$/', ['KelolaPeminjamanController@daftarPeminjamanPage']);
+$router->post('/^admin\/kelola\/detailPeminjaman$/', ['KelolaPeminjamanController@peminjamanDetail']);
 $router->post('/^admin\/kelola\/konfirmasiRequest$/', ['KelolaPeminjamanController@konfirmasiRequest']);
 $router->post('/^admin\/kelola\/konfirmasiPengembalian$/', ['KelolaPeminjamanController@konfirmasiPengembalian']);
 

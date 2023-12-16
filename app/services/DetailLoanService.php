@@ -34,10 +34,18 @@ class DetailLoanService
     }
     public function getLoanDetails(array $where): array|null
     {
-        $rawLoanDetails = $this->db->findWhere(
-            'tb_detail_peminjaman',
-            $where
-        );
+        $query = "SELECT
+        dp.id_detail_peminjaman,
+        dp.id_peminjaman,
+        dp.id_buku,
+        b.judul_buku
+    From
+        tb_detail_peminjaman dp
+    JOIN
+        tb_BUKU b ON dp.id_buku = b.id_buku
+    WHERE
+        dp.id_peminjaman = :id_peminjaman";
+        $rawLoanDetails = $this->db->executeFetch($query, $where);
 
         $loanDetails = [];
 
@@ -56,5 +64,6 @@ class DetailLoanService
         $this->db->execute($query, $where);
 
     }
+
 
 }
