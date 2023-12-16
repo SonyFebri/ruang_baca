@@ -13,8 +13,8 @@ class RakModel
     public static function fromStdClass($stdObject): RakModel
     {
         return new RakModel(
-            $stdObject->idRak,
-            $stdObject->namaRak,
+            $stdObject->id_rak,
+            $stdObject->nama_rak,
         );
     }
     // Getter dan Setter

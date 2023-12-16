@@ -94,4 +94,32 @@ class BookService
             WHERE id_peminjaman = :id_peminjaman)";
         $this->db->execute($query, $where);
     }
+    public function insertBook(
+        int $id_kategori,
+        int $id_rak,
+        string $judul_buku,
+        string $cover_buku,
+        string $penulis,
+        int $stok,
+        int $stok_tersedia,
+        int $tahun_terbit,
+        string $deskripsi,
+        float $denda
+    ) {
+        $data = [
+            'id_kategori' => $id_kategori,
+            'id_rak' => $id_rak,
+            'judul_buku' => $judul_buku,
+            'cover_buku' => $cover_buku,
+            'penulis' => $penulis,
+            'stok' => $stok,
+            'stok_tersedia' => $stok_tersedia,
+            'tahun_terbit' => $tahun_terbit,
+            'deskripsi' => $deskripsi,
+            'denda' => $denda
+        ];
+
+        $this->db->insert('tb_buku', $data);
+    }
+
 }

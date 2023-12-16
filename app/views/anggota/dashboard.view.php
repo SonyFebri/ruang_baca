@@ -1,9 +1,10 @@
 <head>
     <link rel="stylesheet" href="<?php echo App::get("root_uri") . "/public/css/styleCardDashboard.css" ?>">
+    <?php Helper::importView("partials/headerAnggota.view.php") ?>
 </head>
 
 <body>
-    <?php Helper::importView("partials/header.view.php") ?>
+
     <?php Helper::importView("partials/sidebarAnggota.view.php") ?>
 
     <!-- Container -->

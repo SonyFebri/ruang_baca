@@ -1,27 +1,32 @@
 <body>
-    <?php Helper::importView("partials/header.view.php") ?>
+    <?php Helper::importView("partials/headerAdmin.view.php") ?>
 
-
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">No</th>
-                <th scope="col">Nama Peminjam</th>
-                <th scope="col">Total Item</th>
-                <th scope="col">Tanggal Pinjam</th>
-                <th scope="col">Tenggat Waktu</th>
-                <th scope="col">Status</th>
-                <th scope="col">Tanggal Pengembalian</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            /**
-             * @var PeminjamanModel[] $loan 
-             */
-            $index = 1;
-            foreach ($loan as $loans): ?>
+    <style>
+    .tabel {
+        margin-inline: 50px;
+    }
+    </style>
+    <div class="tabel">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Nama Peminjam</th>
+                    <th scope="col">Total Item</th>
+                    <th scope="col">Tanggal Pinjam</th>
+                    <th scope="col">Tenggat Waktu</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Tanggal Pengembalian</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                /**
+                 * @var PeminjamanModel[] $loan 
+                 */
+                $index = 1;
+                foreach ($loan as $loans): ?>
                 <tr>
                     <td scope="row">
                         <?= $index++; ?>
@@ -52,29 +57,30 @@
                             </button>
                         </form>
                         <?php
-                        $buttonKembali = $loans->getStatus();
-                        if ($buttonKembali == "Dipinjam") {
-                            ?>
-                            <form action="<?= App::get("root_uri") . "/admin/kelola/konfirmasiPengembalian" ?>" method="post"
-                                style="display: inline-block;">
-                                <input type="hidden" name="id_peminjaman" value="<?= $loans->getIdPeminjaman() ?>">
-                                <button type="submit" class="btn btn-sm btn-info">
-                                    Kembali
-                                </button>
-                            </form>
-                            <?php
-                        } else {
+                            $buttonKembali = $loans->getStatus();
+                            if ($buttonKembali == "Dipinjam") {
+                                ?>
+                        <form action="<?= App::get("root_uri") . "/admin/kelola/konfirmasiPengembalian" ?>"
+                            method="post" style="display: inline-block;">
+                            <input type="hidden" name="id_peminjaman" value="<?= $loans->getIdPeminjaman() ?>">
+                            <button type="submit" class="btn btn-sm btn-info">
+                                Kembali
+                            </button>
+                        </form>
+                        <?php
+                            } else {
 
-                        }
-                        ?>
+                            }
+                            ?>
                     </td>
 
                     </td>
 
                 </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 
     </thead>
     </table>

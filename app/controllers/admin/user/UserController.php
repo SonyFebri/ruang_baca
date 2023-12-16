@@ -4,7 +4,7 @@ class UserController
     public function addUserPage()
     {
         $data = [
-            'addUserProses' => App::get('root_uri') . '/admin/user/addUser',
+            'addUserProses' => App::get('root_uri') . '/admin/user/addUser'
         ];
 
         return Helper::view("/admin/user/addUser", $data);

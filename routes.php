@@ -18,16 +18,22 @@ $router->get('/^auth\/login$/', ['AuthController@loginPage']);
 $router->post('/^auth\/login$/', ['AuthController@login']);
 
 $router->get('/^admin\/dashboard$/', ['AdminController@dashboardPage']);
+//anggota routes
 $router->get('/^anggota\/dashboard$/', ['AnggotaController@dashboardPage']);
-$router->get('/^admin\/kelola\/anggotaPage$/', ['KelolaAnggotaController@kelolaAnggotaPage']);
+$router->get('/^anggota\/katalogBuku$/', ['KelolaBukuController@katalogBukuPage']);
+$router->get('/^anggota\/profile$/', ['AnggotaController@profilePage']);
+
+
+$router->get('/^buku\/searchBook$/', ['BookController@searchBook']);
+$router->get('/^auth\/logout$/', ['AuthMiddleware@validateSession', 'AuthController@logout']);
+
+//admin routes
 $router->get('/^admin\/kelola\/anggota$/', ['KelolaAnggotaController@kelolaAnggota']);
 $router->get('/^admin\/kelola\/buku$/', ['KelolaBukuController@kelolaBukuPage']);
-$router->get('/^auth\/logout$/', ['AuthController@logout']);
-$router->get('/^anggota\/katalogBuku$/', ['KelolaBukuController@katalogBukuPage']);
-$router->get('/^buku\/searchBook$/', ['BookController@searchBook']);
-
 $router->get('/^admin\/user\/addUser$/', ['UserController@addUserPage']);
 $router->post('/^admin\/user\/addUser$/', ['UserController@addUser']);
+$router->get('/^admin\/kelola\/addBook$/', ['KelolaBukuController@addBookPage']);
+$router->post('/^admin\/kelola\/addBook$/', ['KelolaBukuController@addBook']);
 
 //cart routes
 $router->post('/^anggota\/cart\/addToDetailCart$/', ['CartController@addToDetailCart']);

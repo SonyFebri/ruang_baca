@@ -1,5 +1,5 @@
 <body>
-    <?php Helper::importView("partials/header.view.php") ?>
+    <?php Helper::importView("partials/headerAnggota.view.php") ?>
     <?php Helper::importView("partials/sidebarAnggota.view.php") ?>
 
     <table class="table table-striped">
@@ -19,7 +19,7 @@
             /**
              * @var BookModel[] $books
              */
-            for($i = 0; $i < count($books); $i++):
+            for ($i = 0; $i < count($books); $i++):
                 $book = $books[$i];
                 ?>
                 <tr>

@@ -47,7 +47,7 @@
         <div class="mb-3">
             <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
             <select class="form-select" id="jenis_kelamin" name="jenis_kelamin" required>
-                <option value="L">Laki-laki</option>
+                <option value="1">Laki-laki</option>
                 <option value="P">Perempuan</option>
             </select>
         </div>

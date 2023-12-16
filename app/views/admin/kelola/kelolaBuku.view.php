@@ -1,9 +1,8 @@
-<link rel="stylesheet" href="<?php echo App::get("root_uri") . "/public/css/styleTable.css" ?>">
-
 <body>
-    <?php Helper::importView("partials/header.view.php") ?>
-    <?php Helper::importView("partials/sidebarAdmin.view.php") ?>
-
+    <?php Helper::importView("partials/headerAdmin.view.php") ?>
+    <? //php Helper::importView("partials/sidebarAdmin.view.php") ?>
+    <a href="<?php echo App::get("root_uri") . "/admin/kelola/addBook" ?>" class="btn btn-primary mb-3">Tambahkan
+        Buku</a>
     <table class="table table-striped">
         <thead>
             <tr>

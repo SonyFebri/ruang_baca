@@ -42,9 +42,4 @@ class Helper
 		$appDir = dirname(__DIR__);
 		return require_once "$appDir/views/$filePath";
 	}
-
-	public static function generateRandomHex(int $byteSize = 16)
-	{
-		return bin2hex(random_bytes($byteSize));
-	}
 }

@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="<?php echo App::get("root_uri") . "/public/css/styleCardBuku.css" ?>">
 
 <body>
-    <?php Helper::importView("partials/header.view.php") ?>
+    <?php Helper::importView("partials/headerAnggota.view.php") ?>
     <?php Helper::importView("partials/sidebarAnggota.view.php") ?>
 
     <div class="container mt-1">

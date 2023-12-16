@@ -11,8 +11,8 @@ class KategoriModel
     public static function fromStdClass($stdObject): KategoriModel
     {
         return new KategoriModel(
-            $stdObject->idKategori,
-            $stdObject->namaKategori,
+            $stdObject->id_kategori,
+            $stdObject->nama_kategori,
         );
     }
     // Getter dan Setter

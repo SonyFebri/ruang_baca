@@ -1,5 +1,5 @@
 <body>
-    <?php Helper::importView("partials/header.view.php") ?>
+    <?php Helper::importView("partials/headerAdmin.view.php") ?>
 
 
     <table class="table table-striped">

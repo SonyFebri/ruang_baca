@@ -48,12 +48,15 @@
                 <img src="<?php echo App::get("root_uri") . "/public/logo/cart.png" ?>" alt="Keranjang Belanja"
                     class="cart-logo">
             </a>
+
             <span class="user-name">
                 <?php echo Session::getInstance()->get('nama') ?>
             </span>
-            <img src="<?php echo App::get("root_uri") . Session::getInstance()->get('foto_user') ?>"
-                alt="Foto Pengguna">
-            <span class="badge">3</span>
+            <a href="<?php echo App::get("root_uri") . "/anggota/profile" ?>">
+                <img src="<?php echo App::get("root_uri") . Session::getInstance()->get('foto_user') ?>"
+                    alt="Foto Pengguna">
+            </a>
+
         </div>
     </div>
 </nav>
