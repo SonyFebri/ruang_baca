@@ -5,7 +5,6 @@
 
 <body>
     <?php Helper::importView("partials/headerAnggota.view.php") ?>
-    <?php Helper::importView("partials/sidebarAnggota.view.php") ?>
 
     <div class="container mt-1">
         <form class="form-inline" action="<?php echo App::get("root_uri") . "/buku/searchBook" ?>" method="get">
@@ -31,8 +30,8 @@
 
                     <div class="col-10 col-sm-4 col-md-3 mb-2">
                         <div class="card">
-                            <img src="<?php echo App::get("root_uri") . "/public/cover/" . $book->getCoverBuku() ?>"
-                                class="card-img-top" alt="Book Cover">
+                            <img src="<?php echo App::get("root_uri") . $book->getCoverBuku() ?>" class="card-img-top"
+                                alt="Book Cover">
                             <div class="card-body">
                                 <h5 class="card-title">
                                     <?= $book->getJudulBuku() ?>

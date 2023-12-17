@@ -1,27 +1,47 @@
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f8f9fa;
-    margin: 0;
-    padding: 0;
+.katalog {
+    padding: 20px;
+    margin-left: 30px;
+}
+
+.form-inline {
+    display: flex;
+    justify-content: flex-end; /* Menggeser form ke kanan */
+    margin-bottom: 20px;
+}
+
+.input-group {
+    width: 70%;
+}
+
+.form-control {
+    width: 80%;
+}
+
+.btn-search {
+    width: 20%;
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end; /* Menggeser kontainer ke kanan */
+}
+
+.card-book {
+    flex: 0 0 24%; /* Atur lebar kartu buku sesuai kebutuhan Anda */
+    margin: 10px;
+    margin-left: 80px; /* Menggeser kartu buku ke kanan */
 }
 
 .card {
-    border: 2px solid #ddd;
+    border: 1px solid #ccc;
     border-radius: 8px;
     overflow: hidden;
-    max-width: 250px;
 }
 
 .card-img-top {
     width: 100%;
-    height: 250px;
-    object-fit: cover2;
+    height: auto;
 }
 
 .card-body {
@@ -29,50 +49,22 @@ body {
 }
 
 .card-title {
-    font-size: 18px;
+    font-size: 1.2em;
     font-weight: bold;
-    
+    margin-bottom: 10px;
 }
 
 .card-text {
-    font-size: 14px;
     margin-bottom: 5px;
 }
 
-.btn {
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 6px 12px; /* Mengurangi padding untuk membuat tombol lebih kecil */
-    margin-right: 8px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.btn-info {
+    background-color: #5bc0de;
     color: #fff;
-}
-.btn-search {
-    background-color: #007bff;
-    color: #fff; /* Warna teks putih */
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    padding: 8px 16px;
-    margin-left: 20px;
+    margin-right: 5px;
 }
 
-.btn-search:hover {
-    background-color: #0056b3;
-    
-}
-.btn-primary {
-    background-color: #007bff;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-}
-
-.row {
-    margin-bottom: 20px;
+.btn-info a {
+    color: #fff;
+    text-decoration: none;
 }

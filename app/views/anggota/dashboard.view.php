@@ -1,33 +1,38 @@
 <head>
-    <link rel="stylesheet" href="<?php echo App::get("root_uri") . "/public/css/styleCardDashboard.css" ?>">
+
     <?php Helper::importView("partials/headerAnggota.view.php") ?>
-</head>
-
-<body>
-
     <?php Helper::importView("partials/sidebarAnggota.view.php") ?>
 
-    <!-- Container -->
-    <div class="container">
-        <!-- Konten pertama -->
-        <div>
-            <h2>Card 1</h2>
-            <p>Isi konten pertama.</p>
+</head>
+<link rel="stylesheet" href="<?php echo App::get("root_uri") . "/public/css/styleCarddashboard.css" ?>">
+
+<body>
+    <h4>Dashboard</h4>
+    <div class="container-wrapper">
+
+        <!-- Kontainer pertama -->
+        <div class="container">
+            <!-- Isi kontainer 1 -->Buku Dipinjam
         </div>
 
-        <!-- Konten kedua -->
-        <div>
-            <h2>Card 2</h2>
-            <!-- Isi konten kedua di sini -->
+        <!-- Kontainer kedua -->
+        <div class="container">
+            <!-- Isi kontainer 2 -->Buku Dikembalikan
         </div>
 
-        <!-- Konten ketiga -->
-        <div>
-            <h2>Card 3</h2>
-            <p>Isi konten ketiga.</p>
+        <!-- Kontainer ketiga -->
+        <div class="container">
+            <!-- Isi kontainer 3 -->Banyaknya Meminjam
+        </div>
+
+    </div>
+    <div class="container2">
+        Judul Buku
+        <div class="book-container">
+            <img src="<?php echo App::get("root_uri") . "/public/cover/gusdur.jpg" ?>" class="card-img-top"
+                alt="Book Cover">
         </div>
     </div>
-
     <?php Helper::importView("partials/footer.view.php") ?>
 
 </body>

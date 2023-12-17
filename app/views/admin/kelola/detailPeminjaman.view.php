@@ -1,7 +1,4 @@
-body>
 <?php Helper::importView("partials/headerAdmin.view.php") ?>
-
-
 <div class="tabel">
     <table class="table table-striped" style="margin-inline: 50px;">
         <thead>

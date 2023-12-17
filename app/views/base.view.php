@@ -16,8 +16,14 @@
 </head>
 
 <body>
-    <?php require $subview; ?>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js"></script>
+    <div class="content">
+        <!-- Your page content goes here -->
+        <?php require $subview; ?>
+        <!-- ... other content ... -->
+    </div>
+
+
 </body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js"></script>
 
 </html>
