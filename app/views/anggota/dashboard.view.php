@@ -26,13 +26,27 @@
         </div>
 
     </div>
+    <br>
+    <h4>Last borrowed book</h4>
+    <br><br><br>
+    <?php
+    /**
+     * @var BookModel1[] $book
+     */
+    foreach ($book as $buku): ?>
     <div class="container2">
-        Judul Buku
+        <p>
+            <?php echo $buku->getJudulBuku() ?>
+        </p>
+        <p class="deskripsi">
+            <?php echo $buku->getDeskripsi() ?>
+        </p>
         <div class="book-container">
             <img src="<?php echo App::get("root_uri") . "/public/cover/gusdur.jpg" ?>" class="card-img-top"
                 alt="Book Cover">
         </div>
     </div>
+    <?php endforeach; ?>
     <?php Helper::importView("partials/footer.view.php") ?>
 
 </body>

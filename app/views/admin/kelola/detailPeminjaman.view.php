@@ -14,15 +14,15 @@
              */
             $index = 1;
             foreach ($loanDetails as $loanDetail): ?>
-                <tr>
-                    <td scope="row">
-                        <?= $index++; ?>
-                    </td>
-                    <td>
-                        <?= $loanDetail->getJudulBuku() ?>
-                    </td>
+            <tr>
+                <td scope="row">
+                    <?= $index++; ?>
+                </td>
+                <td>
+                    <?= $loanDetail->getJudulBuku() ?>
+                </td>
 
-                </tr>
+            </tr>
             <?php endforeach; ?>
         </tbody>
     </table>

@@ -62,7 +62,7 @@ class LoanService
         p.*,
         u_peminjam.nama AS nama_peminjam
     FROM
-        tb_PEMINJAMAN p
+        tb_peminjaman p
     JOIN
         tb_USER u_peminjam ON p.id_user = u_peminjam.id_user
     WHERE
@@ -80,20 +80,25 @@ class LoanService
         return $loan;
     }
 
-    public function getSingleLoan(array $where): PeminjamanModel|null
+    public function getHistory(array $where)
     {
-        $rawLoan = $this->db->findWhere(
-            'tb_peminjaman',
-            $where
-        );
+        $query = "SELECT
+        p.*,
+        u.nama AS nama_peminjam
+    FROM
+        tb_PEMINJAMAN p
+    JOIN
+        tb_USER u ON p.id_admin = u.id_user
+    WHERE
+        p.id_user = :id_user";
+        $rawLoans = $this->db->executeFetch($query, $where);
+        // return Helper::dd($rawLoans);
+        $loan = [];
+        foreach ($rawLoans as $rawLoan) {
+            $loan[] = PeminjamanModel::fromStdClass($rawLoan);
 
-        $loan = PeminjamanModel::fromStdClass($rawLoan);
-
-        if ($rawLoan) {
-            return $loan;
         }
-
-        return null;
+        return $loan;
     }
     public function insertToLoan($where)
     {
@@ -125,15 +130,5 @@ class LoanService
         WHERE id_peminjaman = :id_peminjaman";
         $this->db->execute($query, $where);
     }
-
-
-
-    // $loan = $loanService::getInstance()->getSingleLoan(['id_user' => $id_user]);
-
-    // Session::getInstance()->get('id_user');
-
-    // $loanDetails = $loanService::getInstance()->getLoanDetails(['id_peminjaman' => $id_peminjaman]);
-
-    // $loan->setPeminjamanDetails($loanDetails);
 
 }

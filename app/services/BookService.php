@@ -121,5 +121,31 @@ class BookService
 
         $this->db->insert('tb_buku', $data);
     }
+    public function getLastBook($where)
+    {
+
+        $query = "SELECT tb_buku.*
+        FROM tb_buku
+        JOIN tb_detail_peminjaman ON tb_buku.id_buku = tb_detail_peminjaman.id_buku
+        JOIN tb_peminjaman ON tb_detail_peminjaman.id_peminjaman = tb_peminjaman.id_peminjaman
+        WHERE tb_peminjaman.id_user = :id_user
+        ORDER BY tb_peminjaman.tanggal_pinjam DESC
+        LIMIT 1";
+
+        $rawBooks = $this->db->executeFetch($query, $where);
+
+        $books = [];
+        if ($rawBooks) {
+            foreach ($rawBooks as $rawBook) {
+                $books[] = BookModel1::fromStdClass($rawBook);
+            }
+
+            return $books;
+        }
+        return Helper::dd($where);
+    }
+
+
+
 
 }

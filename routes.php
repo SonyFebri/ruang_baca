@@ -22,6 +22,7 @@ $router->get('/^admin\/dashboard$/', ['AdminController@dashboardPage']);
 $router->get('/^anggota\/dashboard$/', ['AnggotaController@dashboardPage']);
 $router->get('/^anggota\/katalogBuku$/', ['KelolaBukuController@katalogBukuPage']);
 $router->get('/^anggota\/profile$/', ['AnggotaController@profilePage']);
+$router->get('/^anggota\/history$/', ['AnggotaController@history']);
 
 
 $router->get('/^buku\/searchBook$/', ['BookController@searchBook']);

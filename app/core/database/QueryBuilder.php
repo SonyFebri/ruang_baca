@@ -174,7 +174,7 @@ class QueryBuilder
 	{
 		try {
 			$statement = $this->pdo->prepare($sql);
-			$statement->execute($param);
+			return $statement->execute($param);
 		} catch (PDOException $e) {
 			die("Whoops!! something went wrong!!!\n" . $e->getMessage());
 		}

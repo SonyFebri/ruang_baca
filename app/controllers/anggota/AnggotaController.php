@@ -3,7 +3,18 @@ class AnggotaController
 {
     public function dashboardPage()
     {
-        return Helper::view("anggota/dashboard");
+        $idUser = Session::getInstance()->get('id_user');
+        $id_user = [
+            'id_user' => $idUser
+        ];
+        // return Helper::dd($id_user);
+        $bookService = BookService::getInstance();
+        $book = $bookService->getLastBook($id_user);
+        $data = [
+            'book' => $book
+        ];
+
+        return Helper::view("anggota/dashboard", $data);
     }
     public function profilePage()
     {
@@ -23,6 +34,17 @@ class AnggotaController
 
         return Helper::view("anggota/profile", $data);
     }
-
-
+    public function history()
+    {
+        $idUser = Session::getInstance()->get('id_user');
+        $loanService = LoanService::getInstance();
+        $id_user = [
+            'id_user' => $idUser
+        ];
+        $loans = $loanService->getHistory($id_user);
+        $data = [
+            'histories' => $loans
+        ];
+        return Helper::view("anggota/history", $data);
+    }
 }
